@@ -1,0 +1,67 @@
+<h1 [class.grey]="h1Style">Home1</h1>
+<!-- the css grey class will only be applied if the boolean h1Style = true  -->
+
+<button (click)="firstClick()">Click this super cool button</button>
+
+<!-- to control multiple classes or styles at once:  -->
+<!-- classes  -->
+<h1 [ngClass]="{   
+'grey': h1Style,
+'large': !h1Style
+}">Home2</h1>
+
+<!-- styles -->
+<h1 [style.color]="h1Style ? 'grey' : 'black'">Home3</h1>
+
+<h1 [ngStyle]="{   
+  'color': h1Style ? 'grey' : 'blue',
+  'font-size': !h1Style ? '1em' : '4em'
+}">Home4</h1>
+
+
+<h1>Users</h1>
+
+<!-- *ngIf -> if ul contains data -->
+<ul *ngIf="users">
+  <!-- *ngFor iterates over array of objects via loop-->
+  <li *ngFor="let user of users.data">
+    <img [src]="user.avatar">
+    <p>{{ user.first_name }} {{ user.last_name }}</p>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Other options for click -->
+
+<!-- (focus)="myMethod()"
+(blur)="myMethod()" 
+(submit)="myMethod()"  
+(scroll)="myMethod()"
+
+(cut)="myMethod()"
+(copy)="myMethod()"
+(paste)="myMethod()"
+
+(keydown)="myMethod()"
+(keypress)="myMethod()"
+(keyup)="myMethod()"
+
+(mouseenter)="myMethod()"
+(mousedown)="myMethod()"
+(mouseup)="myMethod()"
+
+(click)="myMethod()"
+(dblclick)="myMethod()"
+
+(drag)="myMethod()"
+(dragover)="myMethod()"
+(drop)="myMethod()" -->
