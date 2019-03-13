@@ -12,19 +12,13 @@ export class ContactComponent implements OnInit {
   submitted = false;        // relates to onSubmit()
   success = false;          // relates to onSubmit()
 
-  constructor(private formBuilder: FormBuilder) {  // FormBuilder imported above
-    this.messageForm = this.formBuilder.group({
-      name: ['', Validators.required], //makes field mandatory, sets space as standard input 
-      massage: ['', Validators.required]  
-
-    })
-  }   
+  constructor(private formBuilder: FormBuilder) { }  // FormBuilder imported above
 
   ngOnInit() {
-    // this.messageForm = this.formBuilder.group({
-    //   name: ['', Validators.required],
-    //   message: ['', Validators.required]
-    // });
+    this.messageForm = this.formBuilder.group({
+      name: ['', Validators.required],  //makes field mandatory, sets space as standard input
+      message: ['', Validators.required]
+    });
   }
 
   onSubmit() {

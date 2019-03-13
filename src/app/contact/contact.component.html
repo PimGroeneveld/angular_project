@@ -3,13 +3,17 @@
 <!-- messageForm declared earlier. ngSubmit an angular way. sort of on click do this -->
 <form [formGroup] = "messageForm" (ngSubmit) = "onSubmit()">
 
+  <!-- if success = true -> show "your form is valid" -->
   <h5 *ngIf="success">Your form is valid!</h5>
 
     <label>
       Name:
-      <input type="text" formControlName="name">
+      <!-- "name" below matches name: from contact.components.ts -->
+      <input type="text" formControlName="name"> 
+      <!-- is submitted = true && theres an error -> show error -->
       <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
-        <div *ngIf="messageForm.controls.name.errors.required">Your name is required</div>
+        <!-- allows use of different error messages based on which validation failed -->
+        <div *ngIf="messageForm.controls.name.errors.required">Your name is required, dude</div>
       </div>
     </label>
   
@@ -21,17 +25,16 @@
       </div>
     </label>
 
-    <input type="submit" value="Send message" class="cta">
+    <!-- cta = call to action -->
+    <input type="submit" value="Send message" class="cta">  
   
-  </form>
-
-  <div *ngIf="submitted" class="results">
-    <strong>Name:</strong> 
-    <span>{{ messageForm.controls.name.value }}</span>
-
-    <strong>Message:</strong> 
-    <span>{{ messageForm.controls.message.value }}</span>
-  </div>
-
-
 </form>
+
+<!-- shows info that user just put in -->
+<div *ngIf="submitted" class="results">
+  <strong>Name:</strong> 
+  <span>{{ messageForm.controls.name.value }}</span>
+
+  <strong>Message:</strong> 
+  <span>{{ messageForm.controls.message.value }}</span>
+ </div>
